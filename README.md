@@ -9,7 +9,7 @@ You can create any color by defining the HSL (Hue, Saturation, Lightness) values
 
 ## RGB ColorTemp
 
-The three *RGB ColorTemp* helpers are made to convert a user supplied value into some color from a color-spectrum of two values. Usually this spectrum is ranging from [red]([HTML Color Picker]https://www.w3schools.com/colors/colors_picker.asp?colorhex=ff0000) (HSL[0, 100%, 50%]) to [blue](https://www.w3schools.com/colors/colors_picker.asp?colorhex=0000ff) (HSL[250,100%, 50%]), from warm to cold.
+The three *RGB ColorTemp* helpers are made to convert a user supplied value into some color from a color-spectrum of two values. Usually this spectrum is ranging from [red](https://www.w3schools.com/colors/colors_picker.asp?colorhex=ff0000) (HSL[0, 100%, 50%]) to [blue](https://www.w3schools.com/colors/colors_picker.asp?colorhex=0000ff) (HSL[250,100%, 50%]), from warm to cold.
 
 The three different helpers are really similar. The first one only receives the percentage of the maximum hue value (250 for blue). Based on this supplied value you will get some color between red and blue.
 
