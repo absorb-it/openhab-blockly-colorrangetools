@@ -1,0 +1,319 @@
+uid: absorb-it:blockly:colorrangetools
+tags: []
+props:
+  parameters: []
+  parameterGroups: []
+timestamp: Jan 5, 2024, 2:02:40 PM
+component: BlockLibrary
+config:
+  name: ColorRangeTools
+slots:
+  blocks:
+    - component: BlockType
+      config:
+        args0:
+          - align: CENTER
+            type: input_dummy
+        args1:
+          - check: Number
+            name: HUE
+            type: input_value
+          - check: Number
+            name: SATURATION
+            type: input_value
+          - check: Number
+            name: LIGHTNESS
+            type: input_value
+        colour: '%{BKY_COLOUR_HUE}'
+        inputsInline: false
+        message0: HSL to RGB %1
+        message1: >
+          Hue %1
+          Saturation (in %) %2
+          Lightness (in %) %3
+        tooltip: convert HSL values to RGB888 Hex Colour ("#......")
+        type: absorb_it_absorb_it_colorrangetools_HSLtoRGB888
+        output: Colour
+        helpUrl: "https://github.com/absorb-it/openhab-blockly-colorrangetools/blob/main/README.md"
+      slots:
+        code:
+          - component: BlockCodeTemplate
+            config:
+              template: "{{utility:absorb_it_colorrangetools_HSLtoRGB888}}({{input:HUE}}, {{input:SATURATION}}, {{input:LIGHTNESS}})"
+        toolbox:
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 0
+              name: HUE
+              shadow: true
+              type: math_number
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 100
+              name: SATURATION
+              shadow: true
+              type: math_number
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 50
+              name: LIGHTNESS
+              shadow: true
+              type: math_number
+    - component: BlockType
+      config:
+        args0:
+          - align: CENTER
+            type: input_dummy
+        args1:
+          - check: Number
+            name: HUE_PERCENT
+            type: input_value
+        colour: '%{BKY_COLOUR_HUE}'
+        inputsInline: false
+        message0: RGB ColorTemp %1
+        message1: >
+          Hue (in %) %1
+        tooltip: convert percentage into colour between RED (hue=0) and BLUE (hue=250), result is RGB888 Hex Colour ("#......")
+        type: absorb_it_colorTemp
+        output: Colour
+        helpUrl: "https://github.com/absorb-it/openhab-blockly-colorrangetools/blob/main/README.md"
+      slots:
+        code:
+          - component: BlockCodeTemplate
+            config:
+              template: "{{utility:absorb_it_colorrangetools_colorTempToRGB888}}({{input:HUE_PERCENT}})"
+        toolbox:
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 0
+              name: HUE_PERCENT
+              shadow: true
+              type: math_number
+    - component: BlockType
+      config:
+        args0:
+          - align: CENTER
+            type: input_dummy
+        args1:
+          - check: Number
+            name: VALUE
+            type: input_value
+          - check: Number
+            name: MINIMUM
+            type: input_value
+          - check: Number
+            name: MAXIMUM
+            type: input_value
+        colour: '%{BKY_COLOUR_HUE}'
+        inputsInline: false
+        message0: RGB ColorTemp %1
+        message1: >
+          Value %1
+          Minimum %2
+          Maximum %3
+        tooltip: convert Value scaled by MinValue and MaxValue into colour between RED (hue=0) and BLUE (hue=250), result is RGB888 Hex Colour ("#......")
+        type: absorb_it_absorb_it_colorrangetools_valueToRGB888
+        output: Colour
+        helpUrl: "https://github.com/absorb-it/openhab-blockly-colorrangetools/blob/main/README.md"
+      slots:
+        code:
+          - component: BlockCodeTemplate
+            config:
+              template: "{{utility:absorb_it_colorrangetools_valueToRGB888}}({{input:VALUE}}, {{input:MINIMUM}}, {{input:MAXIMUM}})"
+        toolbox:
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 50
+              name: VALUE
+              shadow: true
+              type: math_number
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 0
+              name: MINIMUM
+              shadow: true
+              type: math_number
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 100
+              name: MAXIMUM
+              shadow: true
+              type: math_number
+    - component: BlockType
+      config:
+        args0:
+          - align: CENTER
+            type: input_dummy
+        args1:
+          - check: Number
+            name: VALUE
+            type: input_value
+          - check: Number
+            name: MINIMUM
+            type: input_value
+          - check: Number
+            name: MAXIMUM
+            type: input_value
+        args2:
+          - check: Colour
+            name: MIN_COLOR
+            type: input_value
+          - check: Colour
+            name: MAX_COLOR
+            type: input_value
+        colour: '%{BKY_COLOUR_HUE}'
+        inputsInline: false
+        message0: RGB ColorTemp %1
+        message1: >
+          Value %1
+          Minimum %2
+          Maximum %3
+        message2: >
+          Color of min Value %1
+          Color of max Value %2
+        tooltip: convert Value scaled by MinValue and MaxValue into colour between MinCOLOR and MaxCOLOR, result is RGB888 Hex Colour ("#......")
+        type: absorb_it_absorb_it_colorrangetools_valueToRGB888Complex
+        output: Colour
+        helpUrl: "https://github.com/absorb-it/openhab-blockly-colorrangetools/blob/main/README.md"
+      slots:
+        code:
+          - component: BlockCodeTemplate
+            config:
+              template: "{{utility:absorb_it_colorrangetools_valueToRGB888Complex}}({{input:VALUE}}, {{input:MINIMUM}}, {{input:MAXIMUM}}, {{input:MIN_COLOR}}, {{input:MAX_COLOR}})"
+        toolbox:
+          - component: PresetInput
+            config:
+              fields:
+                COLOUR: "#0000ee"
+              name: MIN_COLOR
+              required: false
+              shadow: true
+              type: colour_picker
+          - component: PresetInput
+            config:
+              fields:
+                COLOUR: "#ff0000"
+              name: MAX_COLOR
+              required: false
+              shadow: true
+              type: colour_picker
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 50
+              name: VALUE
+              shadow: true
+              type: math_number
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 0
+              name: MINIMUM
+              shadow: true
+              type: math_number
+          - component: PresetInput
+            config:
+              fields:
+                NUM: 100
+              name: MAXIMUM
+              shadow: true
+              type: math_number
+  utilities:
+    - component: UtilityFunction
+      config:
+        code: >-
+          function {{name}}(color) {
+            // based on https://github.com/Chalarangelo/30-seconds-of-code/blob/master/content/snippets/js/s/rgb-to-hsl.md
+            // CC-BY-4.0 license - https://creativecommons.org/licenses/by/4.0/
+            r = parseInt("0x"+color.substr(1, 2)) / 255;
+            g = parseInt("0x"+color.substr(3, 2)) / 255;
+            b = parseInt("0x"+color.substr(5, 2)) / 255;
+            const l = Math.max(r, g, b);
+            const s = l - Math.min(r, g, b);
+            const h = s
+              ? l === r
+                ? (g - b) / s
+                : l === g
+                ? 2 + (b - r) / s
+                : 4 + (r - g) / s
+              : 0;
+            return {
+              "h": 60 * h < 0 ? 60 * h + 360 : 60 * h,
+              "s": 100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
+              "l": (100 * (2 * l - s)) / 2,
+            };
+          };
+        name: absorb_it_colorrangetools_RGB888toHSL
+    - component: UtilityFunction
+      config:
+        code: >-
+          function {{name}}(h, s, l) {
+            // based on https://stackoverflow.com/questions/36721830/convert-hsl-to-rgb-and-hex/44134328#44134328
+            // CC BY-SA 4.0 Deed license - https://creativecommons.org/licenses/by-sa/4.0/
+            let logString = "HSL[" + parseInt(h) + " " + parseInt(s) + " " + parseInt(l) + "] -> ";
+            l /= 100;
+            const a = s * Math.min(l, 1 - l) / 100;
+            const f = n => {
+              const k = (n + h / 30) % 12;
+              const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+              return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+            };
+            result = `#${f(0)}${f(8)}${f(4)}`
+            console.log(logString + result);
+            return result;
+          }
+        name: absorb_it_colorrangetools_HSLtoRGB888
+    - component: UtilityFunction
+      config:
+        code: >-
+          function {{name}}(h) {
+            var hue = 250 - (2.5*h)  // HUE range 0-red to 250-blue
+            return {{absorb_it_colorrangetools_HSLtoRGB888}}(hue, 100, 50);
+          }
+        name: absorb_it_colorrangetools_colorTempToRGB888
+    - component: UtilityFunction
+      config:
+        code: >-
+          function {{name}}(value, min, max) {
+            if (min > max)
+              min = max;
+            if (value < min)
+              value = min;
+            if (value > max)
+              value = max;
+            var scale = 250 / (max - min);
+            var hue = 250 - (scale*value)
+            return {{absorb_it_colorrangetools_HSLtoRGB888}}(hue, 100, 50);
+          }
+        name: absorb_it_colorrangetools_valueToRGB888
+    - component: UtilityFunction
+      config:
+        code: >-
+          function {{name}}(value, min, max, min_color, max_color) {
+            if (min > max)
+              min = max;
+            if (value < min)
+              value = min;
+            if (value > max)
+              value = max;
+            var v_range = max - min;
+            var scaled_value = (value - min) / v_range;
+            var min_hsl = {{absorb_it_colorrangetools_RGB888toHSL}}(min_color);
+            var max_hsl = {{absorb_it_colorrangetools_RGB888toHSL}}(max_color);
+            var h_range = max_hsl.h - min_hsl.h;
+            var s_range = max_hsl.s - min_hsl.s;
+            var l_range = max_hsl.l - min_hsl.l;
+            return {{absorb_it_colorrangetools_HSLtoRGB888}}(
+              min_hsl.h + (h_range*scaled_value),
+              min_hsl.s + (s_range*scaled_value),
+              min_hsl.l + (l_range*scaled_value)
+            );
+          }
+        name: absorb_it_colorrangetools_valueToRGB888Complex
